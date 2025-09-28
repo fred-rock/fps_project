@@ -1,0 +1,394 @@
+[gd_scene load_steps=10 format=3 uid="uid://b6udi2rs6ii5e"]
+
+[ext_resource type="PackedScene" uid="uid://cxmkuadf3rpcy" path="res://scenes/player/player_controller.tscn" id="1_sk5k4"]
+[ext_resource type="Material" uid="uid://bodh2d1k1ersi" path="res://assets/materials/ground_01.tres" id="2_oc4kc"]
+[ext_resource type="Material" uid="uid://cd35sruit0n44" path="res://assets/materials/grass_01.tres" id="3_s8va5"]
+[ext_resource type="Material" uid="uid://b3hcqmvfxrukq" path="res://assets/materials/marble_pink.tres" id="4_dga24"]
+[ext_resource type="Material" uid="uid://wv4pur37nwx5" path="res://assets/materials/marble_dark.tres" id="5_qxy0u"]
+[ext_resource type="Texture2D" uid="uid://bh4yvt6o1ttnd" path="res://export/360_F_230448188_4ZSkyd3mZljM27WqlyHZWhPeLqJKJj2D.jpg" id="6_excbq"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_j7kpp"]
+panorama = ExtResource("6_excbq")
+filter = false
+
+[sub_resource type="Sky" id="Sky_bjebc"]
+sky_material = SubResource("PanoramaSkyMaterial_j7kpp")
+
+[sub_resource type="Environment" id="Environment_5rr72"]
+background_mode = 2
+background_energy_multiplier = 3.5
+sky = SubResource("Sky_bjebc")
+sky_rotation = Vector3(0, 1.27584, 0)
+ssr_enabled = true
+ssao_enabled = true
+volumetric_fog_density = 0.02
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_sk5k4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -6)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -7.5)
+material_override = ExtResource("2_oc4kc")
+use_collision = true
+size = Vector3(17, 0.25, 17)
+material = ExtResource("2_oc4kc")
+
+[node name="Ground2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.25, -8.5)
+material_override = ExtResource("2_oc4kc")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("2_oc4kc")
+metadata/_edit_group_ = true
+
+[node name="Ground3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.5, -9.5)
+material_override = ExtResource("2_oc4kc")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("2_oc4kc")
+metadata/_edit_group_ = true
+
+[node name="Ground4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.75, -10.5)
+material_override = ExtResource("2_oc4kc")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("2_oc4kc")
+metadata/_edit_group_ = true
+
+[node name="Ground5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, -11.5)
+material_override = ExtResource("2_oc4kc")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("2_oc4kc")
+metadata/_edit_group_ = true
+
+[node name="Wall" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.875, -5.5)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(1, 6, 14)
+material = ExtResource("3_s8va5")
+
+[node name="Wall3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.875, -4)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(1, 4, 5)
+material = ExtResource("3_s8va5")
+
+[node name="Wall4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.875, -10)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(1, 4, 5)
+material = ExtResource("3_s8va5")
+
+[node name="Wall5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.875, -4)
+material_override = ExtResource("4_dga24")
+use_collision = true
+size = Vector3(3, 4, 5)
+material = ExtResource("3_s8va5")
+
+[node name="Wall2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2.875, 1)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(18, 6, 1)
+material = ExtResource("3_s8va5")
+
+[node name="Column" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.5, -11)
+material_override = ExtResource("4_dga24")
+height = 5.0
+smooth_faces = false
+material = ExtResource("3_s8va5")
+
+[node name="Column2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.5, -13)
+material_override = ExtResource("5_qxy0u")
+height = 5.0
+smooth_faces = false
+material = ExtResource("3_s8va5")
+
+[node name="Fountain" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.75, -6)
+material_override = ExtResource("5_qxy0u")
+use_collision = true
+radius = 2.0
+height = 1.0
+smooth_faces = false
+material = ExtResource("5_qxy0u")
+
+[node name="Inner" type="CSGCylinder3D" parent="CSGCombiner3D/Fountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+material_override = ExtResource("4_dga24")
+operation = 2
+radius = 1.9
+height = 0.7
+smooth_faces = false
+material = ExtResource("5_qxy0u")
+
+[node name="Pole" type="CSGCylinder3D" parent="CSGCombiner3D/Fountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.25, 0)
+material_override = ExtResource("4_dga24")
+radius = 0.1
+height = 5.0
+sides = 7
+smooth_faces = false
+material = ExtResource("5_qxy0u")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 0)
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -7.5)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(17, 0.25, 17)
+material = ExtResource("3_s8va5")
+
+[node name="Ground2" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.25, -8.5)
+material_override = ExtResource("2_oc4kc")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("4_dga24")
+metadata/_edit_group_ = true
+
+[node name="Ground3" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.5, -9.5)
+material_override = ExtResource("2_oc4kc")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("4_dga24")
+metadata/_edit_group_ = true
+
+[node name="Ground4" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.75, -10.5)
+material_override = ExtResource("2_oc4kc")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("4_dga24")
+metadata/_edit_group_ = true
+
+[node name="Ground5" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, -11.5)
+material_override = ExtResource("4_dga24")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("4_dga24")
+metadata/_edit_group_ = true
+
+[node name="Wall" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.875, -5.5)
+material_override = ExtResource("4_dga24")
+use_collision = true
+size = Vector3(1, 6, 14)
+material = ExtResource("5_qxy0u")
+
+[node name="Wall3" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.875, -4)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(1, 4, 5)
+material = ExtResource("4_dga24")
+
+[node name="Wall4" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.875, -10)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(1, 4, 5)
+material = ExtResource("4_dga24")
+
+[node name="Wall2" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2.875, 1)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(18, 6, 1)
+material = ExtResource("5_qxy0u")
+
+[node name="Column2" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.5, -13)
+material_override = ExtResource("5_qxy0u")
+height = 5.0
+smooth_faces = false
+material = ExtResource("4_dga24")
+
+[node name="Fountain" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.75, -6)
+material_override = ExtResource("5_qxy0u")
+use_collision = true
+radius = 2.0
+height = 1.0
+smooth_faces = false
+
+[node name="Inner" type="CSGCylinder3D" parent="CSGCombiner3D2/Fountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+material_override = ExtResource("4_dga24")
+operation = 2
+radius = 1.9
+height = 0.7
+smooth_faces = false
+
+[node name="Pole" type="CSGCylinder3D" parent="CSGCombiner3D2/Fountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.25, 0)
+material_override = ExtResource("4_dga24")
+radius = 0.1
+height = 5.0
+sides = 7
+smooth_faces = false
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D2"]
+transform = Transform3D(4.55, 0, 0, 0, 4.55, 0, 0, 0, 4.55, 12, 3, -7)
+material = ExtResource("4_dga24")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D2"]
+transform = Transform3D(2.68502, 0, 0, 0, 2.68502, 0, 0, 0, 2.68502, 10, 4, -4)
+smooth_faces = false
+material = ExtResource("4_dga24")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(2.44906, 0, 0, 0, 2.44906, 0, 0, 0, 2.44906, 7, 5, -11)
+material = ExtResource("5_qxy0u")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D2/CSGBox3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+material = ExtResource("5_qxy0u")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D2/CSGBox3D"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+material = ExtResource("5_qxy0u")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.357188, -14.5)
+use_collision = true
+size = Vector3(7, 1, 2)
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 0)
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -7.5)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(17, 0.25, 17)
+material = ExtResource("3_s8va5")
+
+[node name="Ground2" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.25, -8.5)
+material_override = ExtResource("2_oc4kc")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("4_dga24")
+metadata/_edit_group_ = true
+
+[node name="Ground3" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.5, -9.5)
+material_override = ExtResource("2_oc4kc")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("4_dga24")
+metadata/_edit_group_ = true
+
+[node name="Ground4" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.75, -10.5)
+material_override = ExtResource("2_oc4kc")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("4_dga24")
+metadata/_edit_group_ = true
+
+[node name="Ground5" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, -11.5)
+material_override = ExtResource("4_dga24")
+use_collision = true
+size = Vector3(3, 0.25, 1)
+material = ExtResource("4_dga24")
+metadata/_edit_group_ = true
+
+[node name="Wall" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.875, -5.5)
+material_override = ExtResource("4_dga24")
+use_collision = true
+size = Vector3(1, 6, 14)
+material = ExtResource("5_qxy0u")
+
+[node name="Wall3" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.875, -4)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(1, 4, 5)
+material = ExtResource("4_dga24")
+
+[node name="Wall4" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.875, -10)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(1, 4, 5)
+material = ExtResource("4_dga24")
+
+[node name="Wall2" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2.875, 1)
+material_override = ExtResource("3_s8va5")
+use_collision = true
+size = Vector3(18, 6, 1)
+material = ExtResource("5_qxy0u")
+
+[node name="Column2" type="CSGCylinder3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.5, -13)
+material_override = ExtResource("5_qxy0u")
+height = 5.0
+smooth_faces = false
+material = ExtResource("4_dga24")
+
+[node name="Fountain" type="CSGCylinder3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.75, -6)
+material_override = ExtResource("5_qxy0u")
+use_collision = true
+radius = 2.0
+height = 1.0
+smooth_faces = false
+
+[node name="Inner" type="CSGCylinder3D" parent="CSGCombiner3D3/Fountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+material_override = ExtResource("4_dga24")
+operation = 2
+radius = 1.9
+height = 0.7
+smooth_faces = false
+
+[node name="Pole" type="CSGCylinder3D" parent="CSGCombiner3D3/Fountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.25, 0)
+material_override = ExtResource("4_dga24")
+radius = 0.1
+height = 5.0
+sides = 7
+smooth_faces = false
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D3"]
+transform = Transform3D(4.55, 0, 0, 0, 4.55, 0, 0, 0, 4.55, 12, 3, -7)
+material = ExtResource("4_dga24")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D3"]
+transform = Transform3D(2.68502, 0, 0, 0, 2.68502, 0, 0, 0, 2.68502, 10, 4, -4)
+smooth_faces = false
+material = ExtResource("4_dga24")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -0.357188, -14.5)
+use_collision = true
+size = Vector3(7, 1, 2)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5rr72")

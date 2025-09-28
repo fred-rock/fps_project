@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://crhxtrav7way7"]
+
+[ext_resource type="Material" uid="uid://dx1f2fvo745w2" path="res://assets/materials/projectile.tres" id="1_dtkph"]
+[ext_resource type="Script" uid="uid://n8qh8jjgkfqj" path="res://assets/scripts/projectile/projectile.gd" id="1_wndne"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dtkph"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wndne"]
+
+[node name="Projectile" type="RigidBody3D"]
+script = ExtResource("1_wndne")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("SphereShape3D_dtkph")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+material_override = ExtResource("1_dtkph")
+mesh = SubResource("SphereMesh_wndne")

@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b2sn4gw4rioqw"
+path.s3tc="res://.godot/imported/hands_arm_detail.png-d9b66c68372e08c503c937c626ba6657.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "2e0e8c37adf5689bec56fd8886ccd9b0"
+}
+
+[deps]
+
+source_file="res://export/hands_arm_detail.png"
+dest_files=["res://.godot/imported/hands_arm_detail.png-d9b66c68372e08c503c937c626ba6657.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

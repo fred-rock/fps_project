@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bodh2d1k1ersi"]
+
+[ext_resource type="Texture2D" uid="uid://ues7myxjbljs" path="res://assets/textures/ground_01/ground_01.png" id="1_4lotp"]
+
+[resource]
+albedo_texture = ExtResource("1_4lotp")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true

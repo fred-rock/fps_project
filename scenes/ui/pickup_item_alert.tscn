@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://brqnd78qfra5y"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 929.0
+offset_bottom = 362.0
+
+[node name="Window" type="Window" parent="Control"]
+title = "You got an item: Ancient Jordans"
+initial_position = 1
+size = Vector2i(500, 250)
+
+[node name="Label" type="Label" parent="Control/Window"]
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 487.0
+offset_bottom = 244.0
+text = "High stockings of a mythic winged demigod
+
+
+
+
+
+
+
+[R2 : Hint] Press X again while jumping use a jump relic."

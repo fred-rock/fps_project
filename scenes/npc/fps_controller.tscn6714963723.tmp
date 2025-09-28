@@ -1,0 +1,208 @@
+[gd_scene load_steps=21 format=3 uid="uid://cxmkuadf3rpcy"]
+
+[ext_resource type="Script" uid="uid://ixgki6pav8vn" path="res://scripts/fps_controller.gd" id="1_ca8e7"]
+[ext_resource type="Material" uid="uid://bw7qseeojktwo" path="res://materials/player.tres" id="1_gf80s"]
+[ext_resource type="Script" uid="uid://cofbfrhcbvkhp" path="res://scripts/reticle.gd" id="3_xc2pf"]
+[ext_resource type="Theme" uid="uid://s8vo0mfwe726" path="res://ui/themes/debug.tres" id="4_y677r"]
+[ext_resource type="Script" uid="uid://bx7tbiemm08" path="res://scripts/debug.gd" id="5_co0pi"]
+[ext_resource type="Script" uid="uid://fk0ptlx51pae" path="res://scripts/state_machine.gd" id="6_co0pi"]
+[ext_resource type="Script" uid="uid://b7sekpub2dhyj" path="res://scripts/idle_player_state.gd" id="7_gshig"]
+[ext_resource type="Script" uid="uid://do7qc2dpumiwf" path="res://scripts/walking_player_state.gd" id="8_jmoha"]
+[ext_resource type="Script" uid="uid://cihkemoanrfaa" path="res://scripts/sprinting_player_state.gd" id="9_bneyr"]
+[ext_resource type="Script" uid="uid://c4ruq33uhx3wo" path="res://scripts/crouching_player_state.gd" id="10_jdr2h"]
+[ext_resource type="Script" uid="uid://d300y0tbrc2p0" path="res://scripts/jumping_player_state.gd" id="11_rk4xh"]
+[ext_resource type="Script" uid="uid://cugakcxh0k3s5" path="res://controllers/sliding_player_state.gd" id="12_uovkr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b1twt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_j0767"]
+material = ExtResource("1_gf80s")
+
+[sub_resource type="Animation" id="Animation_xc2pf"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraController:position:z")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ca8e7"]
+resource_name = "crouch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 0.75, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraController:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bneyr"]
+resource_name = "sprinting"
+
+[sub_resource type="Animation" id="Animation_jmoha"]
+resource_name = "walking"
+length = 2.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6fw5"]
+_data = {
+&"RESET": SubResource("Animation_xc2pf"),
+&"crouch": SubResource("Animation_ca8e7"),
+&"sprinting": SubResource("Animation_bneyr"),
+&"walking": SubResource("Animation_jmoha")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ca8e7"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "ANIMATIONPLAYER", "CROUCH_SHAPECAST")]
+script = ExtResource("1_ca8e7")
+CAMERA_CONTROLLER = NodePath("CameraController/Camera3D")
+ANIMATIONPLAYER = NodePath("AnimationPlayer")
+CROUCH_SHAPECAST = NodePath("ShapeCast3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_b1twt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_j0767")
+
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+fov = 100.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Camera3D"]
+update_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_t6fw5")
+}
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_ca8e7")
+target_position = Vector3(0, 0.5, 0)
+debug_shape_custom_color = Color(0.873045, 0.859795, 0, 1)
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Reticle" type="CenterContainer" parent="UserInterface" node_paths=PackedStringArray("RETICLE_LINES", "PLAYER_CONTROLLER")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_xc2pf")
+RETICLE_LINES = [NodePath("Top"), NodePath("Right"), NodePath("Bottom"), NodePath("Left")]
+PLAYER_CONTROLLER = NodePath("../..")
+
+[node name="Top" type="Line2D" parent="UserInterface/Reticle"]
+points = PackedVector2Array(0, -5, 0, -15)
+width = 2.0
+
+[node name="Right" type="Line2D" parent="UserInterface/Reticle"]
+points = PackedVector2Array(5, 0, 15, 0)
+width = 2.0
+
+[node name="Bottom" type="Line2D" parent="UserInterface/Reticle"]
+points = PackedVector2Array(0, 5, 0, 15)
+width = 2.0
+
+[node name="Left" type="Line2D" parent="UserInterface/Reticle"]
+points = PackedVector2Array(-5, 0, -15, 0)
+width = 2.0
+
+[node name="DebugPanel" type="PanelContainer" parent="UserInterface"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 50.0
+theme = ExtResource("4_y677r")
+script = ExtResource("5_co0pi")
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/DebugPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DebugPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PlayerStateMachine" type="Node3D" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("6_co0pi")
+CURRENT_STATE = NodePath("IdlePlayerState")
+
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_gshig")
+
+[node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("8_jmoha")
+
+[node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("9_bneyr")
+
+[node name="CrouchingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("10_jdr2h")
+
+[node name="JumpingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("11_rk4xh")
+
+[node name="SlidingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("12_uovkr")
+
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxbrch0i3y3pl"]
+
+[ext_resource type="Material" uid="uid://wv4pur37nwx5" path="res://assets/materials/marble_dark.tres" id="1_8od7w"]
+
+[node name="Room_001" type="Node3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(10.7314, 0, 0, 0, 10.7314, 0, 0, 0, 10.7314, 0.019007, 1.28489, 0.0206223)
+material_override = ExtResource("1_8od7w")
+use_collision = true
+height = 0.5
+smooth_faces = false
+material = ExtResource("1_8od7w")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -9.22624e-05, 0.10568, 0.000270189)
+operation = 2
+height = 0.82251
+smooth_faces = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCylinder3D"]
+transform = Transform3D(0.846485, 0, -0.325682, 0, 0.906977, 0, 0.325682, 0, 0.846485, 0.148549, -0.00241712, -0.386803)
+operation = 2
+size = Vector3(0.348206, 0.503208, 0.138916)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCylinder3D"]
+transform = Transform3D(0.846485, 0, -0.325682, 0, 0.906977, 0, 0.325682, 0, 0.846485, -0.148706, -0.00241712, 0.385799)
+operation = 2
+size = Vector3(0.348206, 0.503208, 0.138916)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCylinder3D"]
+transform = Transform3D(-0.325682, 0, -0.846485, 0, 0.906977, 0, 0.846485, 0, -0.325682, 0.379779, -0.00241712, 0.152614)
+operation = 2
+size = Vector3(0.371368, 0.503208, 0.138916)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCylinder3D"]
+transform = Transform3D(-0.325682, 0, -0.846485, 0, 0.906977, 0, 0.846485, 0, -0.325682, -0.384476, 0.00109032, -0.138617)
+operation = 2
+size = Vector3(0.371368, 0.503208, 0.175903)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(10.7314, 0, 0, 0, 10.7314, 0, 0, 0, 10.7314, 0.019007, 4.5681, 0.0206223)
+material_override = ExtResource("1_8od7w")
+use_collision = true
+height = 0.130859
+smooth_faces = false
+material = ExtResource("1_8od7w")
+metadata/_edit_group_ = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.920879, 0, -0.389847, 0, 1, 0, 0.389847, 0, 0.920879, -2.34825, -1.10996, 6.14168)
+size = Vector3(2.11401, 0.215759, 3.70166)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0.138733, 0.784511, 0.703834)
+operation = 2
+size = Vector3(2.39148, 2.19138, 4.88904)

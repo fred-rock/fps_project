@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ui0s883i8yx2"]
+
+[ext_resource type="Script" uid="uid://bw8gpoh0ogw1p" path="res://assets/scripts/projectile_launcher.gd" id="1_0nsru"]
+[ext_resource type="Material" uid="uid://dx1f2fvo745w2" path="res://assets/materials/projectile.tres" id="2_80sfv"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0ffta"]
+
+[node name="ProjectileLauncher" type="Node3D"]
+script = ExtResource("1_0nsru")
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.77671e-16, -1.09278e-08, 0.25, -0.25, -1.09278e-08, 0, 1.09278e-08, -0.25, -1.09278e-08, 0, 0, 0)
+material_override = ExtResource("2_80sfv")
+mesh = SubResource("CylinderMesh_0ffta")

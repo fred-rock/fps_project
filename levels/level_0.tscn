@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=3 uid="uid://y6045ba56f6"]
+
+[ext_resource type="Material" uid="uid://cd35sruit0n44" path="res://assets/materials/grass_01.tres" id="1_7d3si"]
+[ext_resource type="Material" uid="uid://dfetxm0w66jas" path="res://assets/materials/prototype_dark.tres" id="2_jum3j"]
+[ext_resource type="Texture2D" uid="uid://bh4yvt6o1ttnd" path="res://export/360_F_230448188_4ZSkyd3mZljM27WqlyHZWhPeLqJKJj2D.jpg" id="3_c4pne"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wwd78"]
+panorama = ExtResource("3_c4pne")
+filter = false
+
+[sub_resource type="Sky" id="Sky_sjjfs"]
+sky_material = SubResource("PanoramaSkyMaterial_wwd78")
+
+[sub_resource type="Environment" id="Environment_yjsqb"]
+background_mode = 2
+sky = SubResource("Sky_sjjfs")
+tonemap_mode = 3
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Geometry"]
+use_collision = true
+
+[node name="walls" type="CSGBox3D" parent="Geometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9169, 8.63183, -30.9292)
+material_override = ExtResource("1_7d3si")
+use_collision = true
+size = Vector3(108.474, 17.879, 34.25)
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="Geometry/CSGCombiner3D"]
+transform = Transform3D(0.999999, 0.000609792, -0.000915226, -0.000608416, 0.999999, 0.00148796, 0.000916141, -0.0014874, 0.999998, -24.9169, 23.6318, -38.8042)
+material_override = ExtResource("1_7d3si")
+use_collision = true
+size = Vector3(108.474, 17.879, 12)
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="Geometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9169, 40.6318, -48.8042)
+material_override = ExtResource("1_7d3si")
+use_collision = true
+size = Vector3(108.474, 17.879, 12)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2081, 1.25683, -20.3042)
+operation = 2
+size = Vector3(1.75, 2.75, 16)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 12.9581, 3.94433, -18.6403)
+operation = 2
+size = Vector3(1.75, 2.75, 15.5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Geometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3331, 1.25683, -26.8042)
+operation = 2
+size = Vector3(6.5, 2.75, 3)
+
+[node name="walls2" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2096, 8.63183, 33.6077)
+material_override = ExtResource("1_7d3si")
+use_collision = true
+size = Vector3(103.71, 17.879, 12)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Geometry/walls2"]
+transform = Transform3D(1, 0.000631765, 1.4777e-05, -0.000631755, 1, -0.000699232, -1.51919e-05, 0.000699223, 1, 1.2927, 32, 19.3381)
+material_override = ExtResource("1_7d3si")
+use_collision = true
+size = Vector3(108.474, 17.879, 12)
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="Geometry/walls2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2927, 15, 11.3381)
+material_override = ExtResource("1_7d3si")
+use_collision = true
+size = Vector3(108.474, 17.879, 12)
+
+[node name="Ground" type="CSGCombiner3D" parent="Geometry"]
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 4.62365)
+material_override = ExtResource("2_jum3j")
+use_collision = true
+size = Vector3(126.882, 0.001, 61.25)
+material = ExtResource("1_7d3si")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 19)
+use_collision = true
+size = Vector3(3, 3, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, -0.75, 0)
+operation = 2
+size = Vector3(1.25, 1.5, 2)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yjsqb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.542676, 0, -0.839942, 0, 1, 0, 0.839942, 0, 0.542676, 0, 0, 0)
+sky_mode = 1
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -0.416455, 0.909156, 0, -0.909156, -0.416455, 0, 0, 0)
+sky_mode = 1

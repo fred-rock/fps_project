@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cda7n04obympi"]
+
+[ext_resource type="Script" uid="uid://bswh4g1sabdpk" path="res://assets/scripts/system/game_manager.gd" id="1_bvk2m"]
+[ext_resource type="PackedScene" uid="uid://cxmkuadf3rpcy" path="res://scenes/player/player_controller.tscn" id="1_qoi2i"]
+[ext_resource type="PackedScene" uid="uid://lk3xb8sss4fe" path="res://scenes/ui/user_interface.tscn" id="1_rtgv3"]
+[ext_resource type="PackedScene" uid="uid://y6045ba56f6" path="res://levels/level_0.tscn" id="2_bvk2m"]
+
+[node name="MainScene" type="Node"]
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="GameManager" type="Node" parent="Managers"]
+script = ExtResource("1_bvk2m")
+
+[node name="CurrentLevel" type="Node3D" parent="."]
+
+[node name="Node3D" parent="CurrentLevel" instance=ExtResource("2_bvk2m")]
+
+[node name="UserInterface" parent="." instance=ExtResource("1_rtgv3")]
+
+[node name="PlayerController" parent="." instance=ExtResource("1_qoi2i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+default_speed = 4.0
+sprint_speed = 6.0
