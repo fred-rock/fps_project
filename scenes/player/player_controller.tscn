@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://bw7qseeojktwo" path="res://assets/materials/player.tres" id="1_gf80s"]
 [ext_resource type="Script" uid="uid://oqgkrky3gyct" path="res://assets/scripts/player/player_controller.gd" id="1_pvdlq"]
 [ext_resource type="Script" uid="uid://dxkokv6u80rvp" path="res://assets/scripts/player/components/camera_controller.gd" id="3_qmbew"]
-[ext_resource type="Script" uid="uid://dmuxxrvciyyrj" path="res://scenes/player/camera_effects.gd" id="4_0l0yx"]
+[ext_resource type="Script" path="res://scenes/player/camera_effects.gd" id="4_0l0yx"]
 [ext_resource type="Script" uid="uid://rpkhwc0od3m4" path="res://assets/scripts/player/components/interaction_raycast.gd" id="4_cv1cy"]
 [ext_resource type="Script" uid="uid://d0w7um1tewcsg" path="res://assets/scripts/player/components/mouse_capture.gd" id="4_pvdlq"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="5_rkuj1"]
