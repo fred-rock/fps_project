@@ -26,7 +26,7 @@ var _movement_velocity : Vector3 = Vector3.ZERO
 var _sprint_modifier : float = 0.0
 var _crouch_modifier : float = 0.0
 var _speed : float = 0.0
-var _current_fall_velocity : float
+var current_fall_velocity : float
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -73,9 +73,9 @@ func jump() -> void:
 	velocity.y += jump_velocity
 
 func check_fall_speed() -> bool:
-	if _current_fall_velocity < fall_velocity_threshold:
-		_current_fall_velocity = 0.0
+	if current_fall_velocity < fall_velocity_threshold:
+		current_fall_velocity = 0.0
 		return true
 	else:
-		_current_fall_velocity = 0.0
+		current_fall_velocity = 0.0
 		return false

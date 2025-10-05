@@ -6,4 +6,4 @@ func _on_airborne_state_physics_processing(_delta: float) -> void:
 			player_controller.camera_effects.add_fall_kick(2.0)
 		player_controller.state_chart.send_event("onGrounded")
 		
-	player_controller._current_fall_velocity = player_controller.velocity.y
+	player_controller.current_fall_velocity = player_controller.velocity.y
