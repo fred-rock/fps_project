@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://cxmkuadf3rpcy"]
+[gd_scene load_steps=26 format=3 uid="uid://cxmkuadf3rpcy"]
 
 [ext_resource type="Material" uid="uid://bw7qseeojktwo" path="res://assets/materials/player.tres" id="1_gf80s"]
 [ext_resource type="Script" uid="uid://oqgkrky3gyct" path="res://assets/scripts/player/player_controller.gd" id="1_pvdlq"]
 [ext_resource type="Script" uid="uid://dxkokv6u80rvp" path="res://assets/scripts/player/components/camera_controller.gd" id="3_qmbew"]
+[ext_resource type="Script" uid="uid://dyspnfbyer7li" path="res://scenes/player/camera_effects.gd" id="4_0l0yx"]
 [ext_resource type="Script" uid="uid://rpkhwc0od3m4" path="res://assets/scripts/player/components/interaction_raycast.gd" id="4_cv1cy"]
 [ext_resource type="Script" uid="uid://d0w7um1tewcsg" path="res://assets/scripts/player/components/mouse_capture.gd" id="4_pvdlq"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="5_rkuj1"]
@@ -30,9 +31,10 @@ material = ExtResource("1_gf80s")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wpncg"]
 
-[node name="PlayerController" type="CharacterBody3D" node_paths=PackedStringArray("camera", "state_chart", "standing_collision", "crouching_collision", "crouch_check", "interaction_raycast") groups=["player"]]
+[node name="PlayerController" type="CharacterBody3D" node_paths=PackedStringArray("camera", "camera_effects", "state_chart", "standing_collision", "crouching_collision", "crouch_check", "interaction_raycast") groups=["player"]]
 script = ExtResource("1_pvdlq")
 camera = NodePath("CameraController")
+camera_effects = NodePath("CameraController/Camera3D")
 state_chart = NodePath("StateChart")
 standing_collision = NodePath("StandingCollision")
 crouching_collision = NodePath("CrouchingCollision")
@@ -61,13 +63,11 @@ script = ExtResource("3_qmbew")
 player_controller = NodePath("..")
 component_mouse_capture = NodePath("../Components/MouseCapture")
 
-<<<<<<< Updated upstream
-[node name="Camera3D" type="Camera3D" parent="CameraController"]
-fov = 100.0
-=======
 [node name="Camera3D" type="Camera3D" parent="CameraController" node_paths=PackedStringArray("player")]
->>>>>>> Stashed changes
+fov = 100.0
 size = 0.25
+script = ExtResource("4_0l0yx")
+player = NodePath("../..")
 
 [node name="InteractionRaycast" type="RayCast3D" parent="CameraController/Camera3D"]
 target_position = Vector3(0, 0, -3)
